@@ -144,7 +144,7 @@ static int il0323_write(const struct device *dev, const uint16_t x, const uint16
     ptl[IL0323_PTL_HRED_IDX] = x_end_idx;
     ptl[IL0323_PTL_VRST_IDX] = y;
     ptl[IL0323_PTL_VRED_IDX] = y_end_idx;
-    ptl[sizeof(ptl) - 1] = IL0323_PTL_PT_SCAN;
+    ptl[sizeof(ptl) - 1] = 0; // 0 instead of IL0323_PTL_PT_SCAN limits fading outside of Window
     LOG_HEXDUMP_DBG(ptl, sizeof(ptl), "ptl");
 
     il0323_busy_wait(driver);
